@@ -18,12 +18,13 @@ class TestTestaddgroup():
   def teardown_method(self, method):
     self.wd.quit()
   
-  def test_testaddgroup(self):
+  def test_test_add_group(self):
     self.wd.get("http://192.168.64.2/addressbook/index.php")
     self.wd.set_window_size(550, 691)
     self.wd.find_element(By.NAME, "user").send_keys("admin")
     self.wd.find_element(By.NAME, "pass").send_keys("secret")
-    self.wd.find_element(By.NAME, "pass").send_keys(Keys.ENTER)
+    #self.wd.find_element(By.NAME, "pass").send_keys(Keys.ENTER) - doesn't work that way
+    self.wd.find_element(By.CSS_SELECTOR, "input:nth-child(7)").click()
     self.wd.find_element(By.LINK_TEXT, "groups").click()
     self.wd.find_element(By.NAME, "new").click()
     self.wd.find_element(By.NAME, "group_name").click()
