@@ -11,11 +11,19 @@ class TestTestaddgroup():
   def teardown_method(self, method):
     self.wd.quit()
   
-  def test_test_add_group(self):
+  def test_add_group(self):
     self.open_home_page()
-    self.login()
+    self.login(username="admin", password="secret")
     self.open_groups_page()
-    self.create_group()
+    self.create_group(name="skdncjdns", header="kjndc skdjc ", footer="sjdcnsd kcj sdkjc sjd c")
+    self.return_to_groups_page()
+    self.logout()
+
+  def test_add_empty_group(self):
+    self.open_home_page()
+    self.login(username="admin", password="secret")
+    self.open_groups_page()
+    self.create_group(name="", header="", footer="")
     self.return_to_groups_page()
     self.logout()
 
@@ -25,23 +33,23 @@ class TestTestaddgroup():
   def return_to_groups_page(self):
     self.wd.find_element(By.LINK_TEXT, "groups").click()
 
-  def create_group(self):
+  def create_group(self, name, header, footer):
     # init group creation
     self.wd.find_element(By.NAME, "new").click()
     # fill in groupform
     self.wd.find_element(By.NAME, "group_name").click()
-    self.wd.find_element(By.NAME, "group_name").send_keys("skdncjdns")
-    self.wd.find_element(By.NAME, "group_header").send_keys("kjndc skdjc ")
-    self.wd.find_element(By.NAME, "group_footer").send_keys("sjdcnsd kcj sdkjc sjd c")
+    self.wd.find_element(By.NAME, "group_name").send_keys(name)
+    self.wd.find_element(By.NAME, "group_header").send_keys(header)
+    self.wd.find_element(By.NAME, "group_footer").send_keys(footer)
     # submit group creation
     self.wd.find_element(By.NAME, "submit").click()
 
   def open_groups_page(self):
     self.wd.find_element(By.LINK_TEXT, "groups").click()
 
-  def login(self):
-    self.wd.find_element(By.NAME, "user").send_keys("admin")
-    self.wd.find_element(By.NAME, "pass").send_keys("secret")
+  def login(self, username, password):
+    self.wd.find_element(By.NAME, "user").send_keys(username)
+    self.wd.find_element(By.NAME, "pass").send_keys(password)
     # self.wd.find_element(By.NAME, "pass").send_keys(Keys.ENTER) - doesn't work that way
     self.wd.find_element(By.CSS_SELECTOR, "input:nth-child(7)").click()
 
