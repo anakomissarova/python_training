@@ -17,7 +17,7 @@ class TestTestaddgroup():
     self.login(username="admin", password="secret")
     self.open_groups_page()
     self.create_group(Group(name="skdncjdns", header="kjndc skdjc ", footer="sjdcnsd kcj sdkjc sjd c"))
-    self.return_to_groups_page()
+    self.open_groups_page()
     self.logout()
 
   def test_add_empty_group(self):
