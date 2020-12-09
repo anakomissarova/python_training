@@ -25,14 +25,11 @@ class TestTestaddgroup():
     self.login(username="admin", password="secret")
     self.open_groups_page()
     self.create_group(Group(name="", header="", footer=""))
-    self.return_to_groups_page()
+    self.open_groups_page()
     self.logout()
 
   def logout(self):
     self.wd.find_element(By.LINK_TEXT, "Logout").click()
-
-  def return_to_groups_page(self):
-    self.wd.find_element(By.LINK_TEXT, "groups").click()
 
   def create_group(self, group):
     # init group creation
