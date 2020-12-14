@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class SessionHelper:
@@ -17,3 +18,4 @@ class SessionHelper:
     def logout(self):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, "Logout").click()
+        WebDriverWait(wd, timeout=3).until(lambda d: d.find_element(By.NAME, "user"))
