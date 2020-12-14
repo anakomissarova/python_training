@@ -21,4 +21,12 @@ class ContactHelper:
 
     def return_to_home_page(self):
         wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "home page").click()
+        wd.find_element(By.LINK_TEXT, "home").click()
+
+    def delete_first_contact(self):
+        wd = self.app.wd
+        wd.find_element(By.NAME, 'selected[]').click()
+        wd.find_element(By.CSS_SELECTOR, ".left:nth-child(8) > input").click()
+        # assert self.driver.switch_to.alert.text == "Delete 1 addresses?"
+        wd.switch_to.alert.accept()
+        self.return_to_home_page()
