@@ -12,6 +12,8 @@ class ContactHelper:
         wd.find_element(By.LINK_TEXT, "add new").click()
         # fill in form
         wd.find_element(By.NAME, "firstname").send_keys(contact.firstname)
+        wd.find_element(By.NAME, "middlename").send_keys(contact.middlename)
+        wd.find_element(By.NAME, "lastname").send_keys(contact.lastname)
         wd.find_element(By.NAME, "mobile").send_keys(contact.mobile)
         # submit form
         wd.find_element(By.NAME, "submit").click()
@@ -30,8 +32,10 @@ class ContactHelper:
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
-        wd.find_element(By.XPATH, "//img[@alt=\'Edit\']").click()
+        wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
         wd.find_element(By.NAME, "firstname").send_keys(contact.firstname)
+        wd.find_element(By.NAME, "middlename").send_keys(contact.middlename)
+        wd.find_element(By.NAME, "lastname").send_keys(contact.lastname)
         wd.find_element(By.NAME, "mobile").send_keys(contact.mobile)
         wd.find_element(By.NAME, "update").click()
         self.return_to_home_page()
