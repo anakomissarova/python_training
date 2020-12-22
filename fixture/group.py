@@ -31,7 +31,8 @@ class GroupHelper:
 
     def open_groups_page(self):
         wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "groups").click()
+        if not (wd.current_url.endswith("/group.php") and wd.find_elements(By.NAME, "new")):
+            wd.find_element(By.LINK_TEXT, "groups").click()
 
     def select_first_group(self):
         wd = self.app.wd

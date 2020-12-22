@@ -19,7 +19,8 @@ class ContactHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        wd.find_element(By.LINK_TEXT, "home").click()
+        if not wd.current_url.endswith("/index.php"):
+            wd.find_element(By.LINK_TEXT, "home").click()
 
     def delete_first_contact(self):
         wd = self.app.wd
