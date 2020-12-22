@@ -8,31 +8,34 @@ class ContactHelper:
         
     def create(self, contact):
         wd = self.app.wd
+        self.open_home_page()
         # open contact creation form
         wd.find_element(By.LINK_TEXT, "add new").click()
         # fill in form
         self.fill_in_form(contact)
         # submit form
         wd.find_element(By.NAME, "submit").click()
-        self.return_to_home_page()
+        self.open_home_page()
 
-    def return_to_home_page(self):
+    def open_home_page(self):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, "home").click()
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.open_home_page()
         wd.find_element(By.NAME, "selected[]").click()
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
-        self.return_to_home_page()
+        self.open_home_page()
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
+        self.open_home_page()
         wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
         self.fill_in_form(contact)
         wd.find_element(By.NAME, "update").click()
-        self.return_to_home_page()
+        self.open_home_page()
 
     def fill_in_form(self, contact):
         wd = self.app.wd

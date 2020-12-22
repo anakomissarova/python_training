@@ -19,27 +19,35 @@ class GroupHelper:
         self.open_groups_page()
 
     def fill_in_form(self, group):
+        self.change_field_value("group_name", group.name)
+        self.change_field_value("group_header", group.header)
+        self.change_field_value("group_footer", group.footer)
+
+    def change_field_value(self, field_name, text):
         wd = self.app.wd
-        wd.find_element(By.NAME, "group_name").send_keys(group.name)
-        wd.find_element(By.NAME, "group_header").send_keys(group.header)
-        wd.find_element(By.NAME, "group_footer").send_keys(group.footer)
+        if text is not None:
+            wd.find_element(By.NAME, field_name).send_keys(text)
 
     def open_groups_page(self):
         wd = self.app.wd
         wd.find_element(By.LINK_TEXT, "groups").click()
 
+    def select_first_group(self):
+        wd = self.app.wd
+        wd.find_element(By.NAME, "selected[]").click()
+
     def delete_first_group(self):
         wd = self.app.wd
         self.open_groups_page()
-        wd.find_element(By.NAME, "selected[]").click()
+        self.select_first_group()
         wd.find_element(By.NAME, "delete").click()
         self.open_groups_page()
 
-    def edit_first_group(self, group):
+    def edit_first_group(self, new_group_data):
         wd = self.app.wd
         self.open_groups_page()
-        wd.find_element(By.NAME, "selected[]").click()
+        self.select_first_group()
         wd.find_element(By.NAME, "edit").click()
-        self.fill_in_form(group)
+        self.fill_in_form(new_group_data)
         wd.find_element(By.NAME, "update").click()
         self.open_groups_page()
