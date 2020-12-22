@@ -26,6 +26,7 @@ class GroupHelper:
     def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
+            wd.find_element(By.NAME, field_name).clear()
             wd.find_element(By.NAME, field_name).send_keys(text)
 
     def open_groups_page(self):
@@ -51,3 +52,8 @@ class GroupHelper:
         self.fill_in_form(new_group_data)
         wd.find_element(By.NAME, "update").click()
         self.open_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements(By.NAME, "selected[]" ))

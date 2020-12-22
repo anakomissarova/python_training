@@ -43,3 +43,7 @@ class ContactHelper:
         wd.find_element(By.NAME, "middlename").send_keys(contact.middlename)
         wd.find_element(By.NAME, "lastname").send_keys(contact.lastname)
         wd.find_element(By.NAME, "mobile").send_keys(contact.mobile)
+
+    def count(self):
+        wd = self.app.wd
+        return len(wd.find_elements(By.NAME, "selected[]"))
