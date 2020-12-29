@@ -18,6 +18,7 @@ class GroupHelper:
         # submit group creation
         wd.find_element(By.NAME, "submit").click()
         self.open_groups_page()
+        self.groups_cache = None
 
     def fill_in_form(self, group):
         self.change_field_value("group_name", group.name)
@@ -35,15 +36,18 @@ class GroupHelper:
         if not (wd.current_url.endswith("/group.php") and wd.find_elements(By.NAME, "new")):
             wd.find_element(By.LINK_TEXT, "groups").click()
 
+    groups_cache = None
+
     def get_groups_list(self):
-        wd = self.app.wd
-        self.open_groups_page()
-        groups = []
-        for el in wd.find_elements(By.CSS_SELECTOR, "span.group"):
-            text = el.text
-            group_id = el.find_element(By.NAME, "selected[]").get_attribute("value")
-            groups.append(Group(name=text, group_id=group_id))
-        return groups
+        if self.groups_cache is None:
+            wd = self.app.wd
+            self.open_groups_page()
+            self.groups_cache = []
+            for el in wd.find_elements(By.CSS_SELECTOR, "span.group"):
+                text = el.text
+                group_id = el.find_element(By.NAME, "selected[]").get_attribute("value")
+                self.groups_cache.append(Group(name=text, group_id=group_id))
+        return list(self.groups_cache)
 
     def select_first_group(self):
         wd = self.app.wd
@@ -55,6 +59,7 @@ class GroupHelper:
         self.select_first_group()
         wd.find_element(By.NAME, "delete").click()
         self.open_groups_page()
+        self.groups_cache = None
 
     def edit_first_group(self, new_group_data):
         wd = self.app.wd
@@ -64,6 +69,7 @@ class GroupHelper:
         self.fill_in_form(new_group_data)
         wd.find_element(By.NAME, "update").click()
         self.open_groups_page()
+        self.groups_cache = None
 
     def count(self):
         wd = self.app.wd
