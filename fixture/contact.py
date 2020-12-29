@@ -25,9 +25,12 @@ class ContactHelper:
             wd.find_element(By.LINK_TEXT, "home").click()
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.open_home_page()
-        wd.find_element(By.NAME, "selected[]").click()
+        wd.find_elements(By.NAME, "selected[]")[index].click()
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         wd.find_element(By.CSS_SELECTOR, "div.msgbox")
@@ -35,9 +38,12 @@ class ContactHelper:
         self.contacts_cache = None
 
     def edit_first_contact(self, contact):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
         self.open_home_page()
-        wd.find_element(By.XPATH, "//img[@alt='Edit']").click()
+        wd.find_elements(By.XPATH, "//img[@alt='Edit']")[index].click()
         self.fill_in_form(contact)
         wd.find_element(By.NAME, "update").click()
         self.open_home_page()

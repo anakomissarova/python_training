@@ -50,26 +50,35 @@ class GroupHelper:
         return list(self.groups_cache)
 
     def select_first_group(self):
+        self.select_group_by_index(0)
+
+    def select_group_by_index(self, index):
         wd = self.app.wd
-        wd.find_element(By.NAME, "selected[]").click()
+        wd.find_elements(By.NAME, "selected[]")[index].click()
 
     def delete_first_group(self):
+        self.delete_group_by_index(0)
+
+    def delete_group_by_index(self, index):
         wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element(By.NAME, "delete").click()
         self.open_groups_page()
         self.groups_cache = None
 
-    def edit_first_group(self, new_group_data):
+    def edit_group_by_index(self, index, new_group_data):
         wd = self.app.wd
         self.open_groups_page()
-        self.select_first_group()
+        self.select_group_by_index(index)
         wd.find_element(By.NAME, "edit").click()
         self.fill_in_form(new_group_data)
         wd.find_element(By.NAME, "update").click()
         self.open_groups_page()
         self.groups_cache = None
+
+    def edit_first_group(self, new_group_data):
+        self.edit_group_by_index(0,new_group_data)
 
     def count(self):
         wd = self.app.wd
