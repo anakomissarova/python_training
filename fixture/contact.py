@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from model.contact import Contact
 
 
 class ContactHelper:
@@ -28,6 +29,7 @@ class ContactHelper:
         wd.find_element(By.NAME, "selected[]").click()
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        wd.find_element(By.CSS_SELECTOR, "div.msgbox")
         self.open_home_page()
 
     def edit_first_contact(self, contact):
@@ -39,13 +41,29 @@ class ContactHelper:
         self.open_home_page()
 
     def fill_in_form(self, contact):
+        self.fill_in_field("firstname", contact.firstname)
+        self.fill_in_field("middlename", contact.middlename)
+        self.fill_in_field("lastname", contact.lastname)
+        self.fill_in_field("mobile", contact.mobile)
+
+    def fill_in_field(self, field_name, text):
         wd = self.app.wd
-        wd.find_element(By.NAME, "firstname").send_keys(contact.firstname)
-        wd.find_element(By.NAME, "middlename").send_keys(contact.middlename)
-        wd.find_element(By.NAME, "lastname").send_keys(contact.lastname)
-        wd.find_element(By.NAME, "mobile").send_keys(contact.mobile)
+        if text:
+            wd.find_element(By.NAME, field_name).clear()
+            wd.find_element(By.NAME, field_name).send_keys(text)
 
     def count(self):
         wd = self.app.wd
         self.open_home_page()
         return len(wd.find_elements(By.NAME, "selected[]"))
+
+    def get_contacts_list(self):
+        wd = self.app.wd
+        self.open_home_page()
+        contacts = []
+        for contact in wd.find_elements(By.NAME, "entry"):
+            contact_id = contact.find_element(By.NAME, "selected[]").get_attribute("id")
+            firstname = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(3)").text
+            lastname = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(2)").text
+            contacts.append(Contact(contact_id=contact_id, firstname=firstname, lastname=lastname))
+        return contacts
