@@ -38,16 +38,25 @@ class ContactHelper:
         self.contacts_cache = None
 
     def edit_first_contact(self, contact):
-        self.edit_contact_by_index(0)
+        self.edit_contact_by_index(0, contact)
 
     def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
-        self.open_home_page()
-        wd.find_elements(By.XPATH, "//img[@alt='Edit']")[index].click()
+        self.open_contact_to_edit_by_index(index)
         self.fill_in_form(contact)
         wd.find_element(By.NAME, "update").click()
         self.open_home_page()
         self.contacts_cache = None
+
+    def open_contact_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.open_home_page()
+        wd.find_elements(By.XPATH, "//img[@alt='Edit']")[index].click()
+
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        self.open_home_page()
+        wd.find_elements(By.XPATH, "//img[@alt='Details']")[index].click()
 
     def fill_in_form(self, contact):
         self.fill_in_field("firstname", contact.firstname)
