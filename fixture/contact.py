@@ -82,10 +82,10 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_view_by_index(index)
         contact_info = wd.find_element(By.ID, "content").text
-        home = re.search("H: (.*)", contact_info).group(1)
-        work = re.search("W: (.*)", contact_info).group(1)
-        mobile = re.search("M: (.*)", contact_info).group(1)
-        secondary = re.search("M: (.*)", contact_info).group(1)
+        home = re.search("H: (.*)", contact_info).group(1) if re.search("H: (.*)", contact_info) else ""
+        work = re.search("W: (.*)", contact_info).group(1) if re.search("W: (.*)", contact_info) else ""
+        mobile = re.search("M: (.*)", contact_info).group(1) if re.search("M: (.*)", contact_info) else ""
+        secondary = re.search("F: (.*)", contact_info).group(1) if re.search("F: (.*)", contact_info) else ""
         return Contact(home=home, mobile=mobile, work=work, secondary=secondary)
 
     def fill_in_form(self, contact):
@@ -96,7 +96,7 @@ class ContactHelper:
 
     def fill_in_field(self, field_name, text):
         wd = self.app.wd
-        if text:
+        if text is not None:
             wd.find_element(By.NAME, field_name).clear()
             wd.find_element(By.NAME, field_name).send_keys(text)
 
