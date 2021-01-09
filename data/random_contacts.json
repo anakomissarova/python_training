@@ -1,0 +1,36 @@
+[
+  {
+    "py/object": "model.contact.Contact",
+    "contact_id": null,
+    "firstname": "first>K:Lzz",
+    "middlename": null,
+    "address": null,
+    "lastname": "last",
+    "mobile": "y#2 0Tg",
+    "home": null,
+    "work": null,
+    "secondary": null,
+    "phones_from_homepage": null,
+    "email1": null,
+    "email2": null,
+    "email3": null,
+    "emails_from_homepage": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "contact_id": null,
+    "firstname": "first7_L * F ",
+    "middlename": null,
+    "address": null,
+    "lastname": "lastD,0w6= ",
+    "mobile": "2-_4)U",
+    "home": null,
+    "work": null,
+    "secondary": null,
+    "phones_from_homepage": null,
+    "email1": null,
+    "email2": null,
+    "email3": null,
+    "emails_from_homepage": null
+  }
+]

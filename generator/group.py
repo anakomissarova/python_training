@@ -7,6 +7,9 @@ import getopt
 import sys
 
 
+n = 5
+f = "data/groups.json"
+
 try:
     opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of groups", "file"])
 except getopt.GetoptError as err:
@@ -15,14 +18,12 @@ except getopt.GetoptError as err:
     getopt.usage()
     sys.exit(2)
 
-n = 5
-f = "data/groups.json"
-
 for opt, val in opts:
     if opt == "-n":
         n = int(val)
     elif opt == "-f":
         f = val
+
 
 def random_string(prefix, maxlen):
     chars = ascii_letters + digits + punctuation + " "*10
