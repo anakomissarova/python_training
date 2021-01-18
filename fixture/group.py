@@ -56,6 +56,10 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_elements(By.NAME, "selected[]")[index].click()
 
+    def select_group_by_id(self, group_id):
+        wd = self.app.wd
+        wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % group_id).click()
+
     def delete_first_group(self):
         self.delete_group_by_index(0)
 
@@ -63,6 +67,14 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         self.select_group_by_index(index)
+        wd.find_element(By.NAME, "delete").click()
+        self.open_groups_page()
+        self.groups_cache = None
+
+    def delete_group_by_id(self, group_id):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(group_id)
         wd.find_element(By.NAME, "delete").click()
         self.open_groups_page()
         self.groups_cache = None
@@ -77,6 +89,16 @@ class GroupHelper:
         self.open_groups_page()
         self.groups_cache = None
 
+    def edit_group_by_id(self, new_group_data):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(new_group_data.group_id)
+        wd.find_element(By.NAME, "edit").click()
+        self.fill_in_form(new_group_data)
+        wd.find_element(By.NAME, "update").click()
+        self.open_groups_page()
+        self.groups_cache = None
+
     def edit_first_group(self, new_group_data):
         self.edit_group_by_index(0,new_group_data)
 
@@ -84,3 +106,6 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements(By.NAME, "selected[]"))
+
+    def clear_from_spaces(self, group):
+        return Group(group_id=group.group_id, name=" ".join(group.name.strip().split()))
