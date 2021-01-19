@@ -17,5 +17,5 @@ def test_edit_contact(app, db, data_constant_contacts, check_ui):
     old_contacts.append(new_contact)
     assert sorted(old_contacts, key=Contact.compare_ids) == sorted(new_contacts, key=Contact.compare_ids)
     if check_ui:
-        assert sorted(map(app.contact.clear_from_spaces, new_contacts), key=Contact.compare_ids) == \
+        assert sorted(map(app.contact.clear_name_from_spaces, new_contacts), key=Contact.compare_ids) == \
                sorted(app.contact.get_contacts_list(), key=Contact.compare_ids)

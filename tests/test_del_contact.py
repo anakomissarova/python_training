@@ -12,5 +12,5 @@ def test_delete_contact(app, db, check_ui):
     old_contacts.remove(contact)
     assert old_contacts == new_contacts
     if check_ui:
-        assert sorted(map(app.contact.clear_from_spaces, new_contacts), key=Contact.compare_ids) == \
+        assert sorted(map(app.contact.clear_name_from_spaces, new_contacts), key=Contact.compare_ids) == \
                sorted(app.contact.get_contacts_list(), key=Contact.compare_ids)

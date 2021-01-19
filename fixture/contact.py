@@ -137,13 +137,13 @@ class ContactHelper:
                 lastname = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(2)").text
                 firstname = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(3)").text
                 address = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(4)").text
-                emails = wd.find_element(By.CSS_SELECTOR, "td:nth-of-type(5)").text
+                emails = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(5)").text
                 phones = contact.find_element(By.CSS_SELECTOR, "td:nth-of-type(6)").text
                 self.contacts_cache.append(Contact(contact_id=contact_id, firstname=firstname, lastname=lastname,
                                                    address=address, phones_from_homepage=phones,
                                                    emails_from_homepage=emails))
         return list(self.contacts_cache)
 
-    def clear_from_spaces(self, contact):
+    def clear_name_from_spaces(self, contact):
         return Contact(contact_id=contact.contact_id, firstname=" ".join(contact.firstname.strip().split()),
                        lastname=" ".join(contact.lastname.strip().split()))
