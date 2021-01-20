@@ -16,5 +16,8 @@ class Group:
         return (self.group_id == other.group_id or self.group_id is None or other.group_id is None)\
                and self.name == other.name
 
+    def __hash__(self):
+        return hash((self.group_id, self.name))
+
     def id_or_max(self):
         return int(self.group_id) if self.group_id else maxsize

@@ -38,12 +38,16 @@ class ContactHelper:
     def delete_contact_by_id(self, contact):
         wd = self.app.wd
         self.open_home_page()
-        wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % contact.contact_id).click()
+        self.select_contact_by_id(contact.contact_id)
         wd.find_element(By.XPATH, "//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         wd.find_element(By.CSS_SELECTOR, "div.msgbox")
         self.open_home_page()
         self.contacts_cache = None
+
+    def select_contact_by_id(self, contact_id):
+        wd = self.app.wd
+        wd.find_element(By.CSS_SELECTOR, "input[value='%s']" % contact_id).click()
 
     def edit_first_contact(self, contact):
         self.edit_contact_by_index(0, contact)
@@ -63,6 +67,23 @@ class ContactHelper:
         wd.find_element(By.NAME, "update").click()
         self.open_home_page()
         self.contacts_cache = None
+
+    def add_contact_to_group(self, contact, group):
+        wd = self.app.wd
+        self.open_home_page()
+        self.select_contact_by_id(contact.contact_id)
+        wd.find_element(By.NAME, "to_group").\
+            find_element(By.CSS_SELECTOR, "option[value='%s']" % group.group_id).click()
+        wd.find_element(By.NAME, "add").click()
+        self.open_home_page()
+
+    def delete_contact_from_group(self, contact, group):
+        wd = self.app.wd
+        self.open_home_page()
+        wd.find_element(By.NAME, "group").find_element(By.CSS_SELECTOR, "option[value='%s']" % group.group_id).click()
+        self.select_contact_by_id(contact.contact_id)
+        wd.find_element(By.NAME, "remove").click()
+        self.open_home_page()
 
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
