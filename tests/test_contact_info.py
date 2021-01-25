@@ -31,14 +31,10 @@ def clear_address(s):
 
 
 def merge_phones_like_homepage(contact):
-    return "\n".join(filter(lambda x: x != "",
-                            map(lambda x: clear_phone(x),
-                                filter(lambda x: x is not None,
-                                       [contact.home, contact.mobile, contact.work, contact.secondary]))))
+    phones = [contact.home, contact.mobile, contact.work, contact.secondary]
+    return "\n".join(filter(lambda x: x != "", [clear_phone(x) for x in phones if x is not None]))
 
 
 def merge_emails_like_homepage(contact):
-    return "\n".join(filter(lambda x: x != "",
-                            map(str.strip,
-                                filter(lambda x: x is not None,
-                                       [contact.email1, contact.email2, contact.email3]))))
+    emails = [contact.email1, contact.email2, contact.email3]
+    return "\n".join(filter(lambda x: x != "", [x.strip() for x in emails if x is not None]))
