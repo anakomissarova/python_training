@@ -19,7 +19,7 @@ class DbFixture:
     def get_groups_list(self):
         group_list = []
         with self.connection.cursor() as cursor:
-            cursor.execute("select group_id, group_name, group_header, group_footer from group_list")
+            cursor.execute("select group_id, group_name, group_header, group_footer from group_list order by group_id")
             for row in cursor:
                 group_id, name, header, footer = row
                 group_list.append(Group(group_id=str(group_id), name=name, header=header, footer=footer))
