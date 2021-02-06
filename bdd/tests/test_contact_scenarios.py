@@ -1,7 +1,8 @@
 from pytest_bdd import scenario
+import os.path
 from bdd.steps.contact_steps import *
 
-FEATURES_PATH = '../features'
+FEATURES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../features")
 
 
 @scenario('contacts.feature', 'Add new contact', features_base_dir=FEATURES_PATH)
