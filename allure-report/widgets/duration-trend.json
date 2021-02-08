@@ -1,0 +1,15 @@
+[ {
+  "buildOrder" : 14,
+  "reportUrl" : "nulljob/addressbook%20tests/14/allure",
+  "reportName" : "AllureReport",
+  "data" : {
+    "duration" : 2627668
+  }
+}, {
+  "buildOrder" : 13,
+  "reportUrl" : "nulljob/addressbook%20tests/13/allure",
+  "reportName" : "AllureReport",
+  "data" : {
+    "duration" : 71620
+  }
+} ]

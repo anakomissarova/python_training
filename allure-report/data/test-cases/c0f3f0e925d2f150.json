@@ -1,0 +1,141 @@
+{
+  "uid" : "c0f3f0e925d2f150",
+  "name" : "test_add_contact_to_group",
+  "fullName" : "tests.test_contact_in_group#test_add_contact_to_group",
+  "historyId" : "516ed2ca93ea188d7516c31ac8cee4e0",
+  "time" : {
+    "start" : 1612800303558,
+    "stop" : 1612800306716,
+    "duration" : 3158
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "stop",
+    "time" : {
+      "start" : 1612800263211,
+      "stop" : 1612800263211,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "orm",
+    "time" : {
+      "start" : 1612800303410,
+      "stop" : 1612800303486,
+      "duration" : 76
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1612800303486,
+      "stop" : 1612800303555,
+      "duration" : 69
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "stop::0",
+    "time" : {
+      "start" : 1612800371299,
+      "stop" : 1612800372045,
+      "duration" : 746
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_contact_in_group"
+  }, {
+    "name" : "host",
+    "value" : "Mac-mini-Stanislav.local"
+  }, {
+    "name" : "thread",
+    "value" : "5422-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_contact_in_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "9aba87d0552ec8af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1612797707334,
+        "stop" : 1612797708777,
+        "duration" : 1443
+      }
+    } ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "2e5cc1734b0dcd1f",
+        "reportUrl" : "nulljob/addressbook%20tests/13/allure/#testresult/2e5cc1734b0dcd1f",
+        "status" : "passed",
+        "time" : {
+          "start" : 1612797707334,
+          "stop" : 1612797708777,
+          "duration" : 1443
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "c0f3f0e925d2f150.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,205 @@
+{
+  "uid" : "999168f46a10ccae",
+  "name" : "test_add_group[None: name J<GZzH-K, header _f T , footer +mB]",
+  "fullName" : "tests.test_add_group#test_add_group",
+  "historyId" : "34c35e91004baa1e140c08f929a20896",
+  "time" : {
+    "start" : 1612797704624,
+    "stop" : 1612797707240,
+    "duration" : 2616
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert [144: name g1...73: , , , ...] == [144: name g1...73: , , , ...]\n  At index 21 diff: None: name J<GZzH-K, header _f T , footer +mB != 189: name J, header _f T , footer +mB\n  Use -v to get the full diff",
+  "statusTrace" : "app = <fixture.application.Application object at 0x7f82b3dd00a0>\ndb = <fixture.db.DbFixture object at 0x7f82b3de8ac0>\njson_groups = None: name J<GZzH-K, header _f T , footer +mB, check_ui = False\n\n    def test_add_group(app, db, json_groups, check_ui):\n        group = json_groups\n        with allure.step('Given a group list'):\n            old_groups = db.get_groups_list()\n        with allure.step('When I add group %s to the list' % group):\n            app.group.create(group)\n        with allure.step('Then the new group list is equal to the old list with the added group'):\n            new_groups = db .get_groups_list()\n            old_groups.append(group)\n>           assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE           assert [144: name g1...73: , , , ...] == [144: name g1...73: , , , ...]\nE             At index 21 diff: None: name J<GZzH-K, header _f T , footer +mB != 189: name J, header _f T , footer +mB\nE             Use -v to get the full diff\n\ntests/test_add_group.py:14: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "app",
+    "time" : {
+      "start" : 1612797704565,
+      "stop" : 1612797704623,
+      "duration" : 58
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1612797678481,
+      "stop" : 1612797678481,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1612797678482,
+      "stop" : 1612797678493,
+      "duration" : 11
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1612797704624,
+      "stop" : 1612797704624,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert [144: name g1...73: , , , ...] == [144: name g1...73: , , , ...]\n  At index 21 diff: None: name J<GZzH-K, header _f T , footer +mB != 189: name J, header _f T , footer +mB\n  Use -v to get the full diff",
+    "statusTrace" : "app = <fixture.application.Application object at 0x7f82b3dd00a0>\ndb = <fixture.db.DbFixture object at 0x7f82b3de8ac0>\njson_groups = None: name J<GZzH-K, header _f T , footer +mB, check_ui = False\n\n    def test_add_group(app, db, json_groups, check_ui):\n        group = json_groups\n        with allure.step('Given a group list'):\n            old_groups = db.get_groups_list()\n        with allure.step('When I add group %s to the list' % group):\n            app.group.create(group)\n        with allure.step('Then the new group list is equal to the old list with the added group'):\n            new_groups = db .get_groups_list()\n            old_groups.append(group)\n>           assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\nE           assert [144: name g1...73: , , , ...] == [144: name g1...73: , , , ...]\nE             At index 21 diff: None: name J<GZzH-K, header _f T , footer +mB != 189: name J, header _f T , footer +mB\nE             Use -v to get the full diff\n\ntests/test_add_group.py:14: AssertionError",
+    "steps" : [ {
+      "name" : "Given a group list",
+      "time" : {
+        "start" : 1612797704625,
+        "stop" : 1612797704626,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I add group None: name J<GZzH-K, header _f T , footer +mB to the list",
+      "time" : {
+        "start" : 1612797704626,
+        "stop" : 1612797707231,
+        "duration" : 2605
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then the new group list is equal to the old list with the added group",
+      "time" : {
+        "start" : 1612797707231,
+        "stop" : 1612797707239,
+        "duration" : 8
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: assert [144: name g1...73: , , , ...] == [144: name g1...73: , , , ...]\n  At index 21 diff: None: name J<GZzH-K, header _f T , footer +mB != 189: name J, header _f T , footer +mB\n  Use -v to get the full diff\n",
+      "statusTrace" : "  File \"/Users/nastya/.jenkins/workspace/addressbook tests/tests/test_add_group.py\", line 14, in test_add_group\n    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "stop::0",
+    "time" : {
+      "start" : 1612797758228,
+      "stop" : 1612797758904,
+      "duration" : 676
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1612797758226,
+      "stop" : 1612797758227,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "Mac-mini-Stanislav.local"
+  }, {
+    "name" : "thread",
+    "value" : "4880-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None: name J<GZzH-K, header _f T , footer +mB"
+  } ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "999168f46a10ccae.json",
+  "parameterValues" : [ "None: name J<GZzH-K, header _f T , footer +mB" ]
+}
