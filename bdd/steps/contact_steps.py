@@ -3,12 +3,12 @@ from model.contact import Contact
 import random
 
 
-@given('A list of contacts', target_fixture='contacts_list')
+@given('a list of contacts', target_fixture='contacts_list')
 def contacts_list(db):
     return db.get_contacts_list()
 
 
-@given('A new contact with <firstname>, <lastname> and <mobile_phone>', target_fixture='new_contact')
+@given('a new contact with <firstname>, <lastname> and <mobile_phone>', target_fixture='new_contact')
 @given('new contact data: <firstname>, <lastname> or <mobile_phone>', target_fixture='new_contact')
 def new_contact(firstname, lastname, mobile_phone):
     return Contact(firstname=firstname, lastname=lastname, mobile=mobile_phone)
@@ -17,6 +17,13 @@ def new_contact(firstname, lastname, mobile_phone):
 @given('a random contact from the list', target_fixture='random_contact')
 def choose_random_contact(contacts_list):
     return random.choice(contacts_list)
+
+
+@given('non-empty list of contacts',  target_fixture='nonempty_contacts_list')
+def nonempty_contacts_list(app, db):
+    if not app.contact.count():
+        app.contact.create(Contact(lastname="tmp"))
+    return db.get_contacts_list()
 
 
 @when('I add new contact to the list')
@@ -45,8 +52,8 @@ def verify_contact_added(db, contacts_list, new_contact):
 
 
 @then('the new list of contacts is equal to the old list with modified contact replaced')
-def verify_contact_modified(db, contacts_list, new_contact):
-    old_list = contacts_list
+def verify_contact_modified(db, nonempty_contacts_list, new_contact):
+    old_list = nonempty_contacts_list
     new_list = db.get_contacts_list()
     for contact in old_list:
         if contact.contact_id == new_contact.contact_id:
@@ -58,8 +65,8 @@ def verify_contact_modified(db, contacts_list, new_contact):
 
 
 @then('the new list of contacts is equal to the old list with the contact removed')
-def verify_contact_deleted(db, contacts_list, random_contact):
-    old_list = contacts_list
+def verify_contact_deleted(db, nonempty_contacts_list, random_contact):
+    old_list = nonempty_contacts_list
     new_list = db.get_contacts_list()
     old_list.remove(random_contact)
     assert sorted(old_list, key=Contact.compare_ids) == \

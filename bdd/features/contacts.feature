@@ -1,6 +1,6 @@
 Feature: Contacts
   Scenario Outline: Add new contact
-    Given A list of contacts
+    Given a list of contacts
     And A new contact with <firstname>, <lastname> and <mobile_phone>
     When I add new contact to the list
     Then the new list of contacts is equal to the old list with a new contact added
@@ -12,7 +12,7 @@ Feature: Contacts
     |Kira     |        |343 12-23-34 |
 
   Scenario Outline: Modify contact
-    Given A list of contacts
+    Given non-empty list of contacts
     And a random contact from the list
     And new contact data: <firstname>, <lastname> or <mobile_phone>
     When I edit the contact
@@ -25,7 +25,7 @@ Feature: Contacts
     |     |       |         |
 
   Scenario: Delete contact
-    Given A list of contacts
+    Given non-empty list of contacts
     And a random contact from the list
     When I delete the contact
     Then the new list of contacts is equal to the old list with the contact removed
