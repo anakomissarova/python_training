@@ -4,3 +4,4 @@ pony
 selenium
 jsonpickle
 pytest
+allure-pytest
