@@ -1,0 +1,16 @@
+[ {
+  "buildOrder" : 14,
+  "reportUrl" : "nulljob/addressbook%20tests/14/allure",
+  "reportName" : "AllureReport",
+  "data" : {
+    "Product defects" : 4,
+    "Test defects" : 1
+  }
+}, {
+  "buildOrder" : 13,
+  "reportUrl" : "nulljob/addressbook%20tests/13/allure",
+  "reportName" : "AllureReport",
+  "data" : {
+    "Product defects" : 3
+  }
+} ]

@@ -1,0 +1,9 @@
+[ {
+  "name" : "Jenkins",
+  "type" : "jenkins",
+  "buildOrder" : 14,
+  "buildName" : "addressbook tests #14",
+  "buildUrl" : "nulljob/addressbook%20tests/14/",
+  "reportName" : "AllureReport",
+  "reportUrl" : "nulljob/addressbook%20tests/14/allure"
+} ]
