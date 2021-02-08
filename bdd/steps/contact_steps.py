@@ -15,8 +15,8 @@ def new_contact(firstname, lastname, mobile_phone):
 
 
 @given('a random contact from the list', target_fixture='random_contact')
-def choose_random_contact(contacts_list):
-    return random.choice(contacts_list)
+def choose_random_contact(nonempty_contacts_list):
+    return random.choice(nonempty_contacts_list)
 
 
 @given('non-empty list of contacts',  target_fixture='nonempty_contacts_list')

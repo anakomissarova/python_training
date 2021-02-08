@@ -1,7 +1,7 @@
 Feature: Contacts
   Scenario Outline: Add new contact
     Given a list of contacts
-    And A new contact with <firstname>, <lastname> and <mobile_phone>
+    And a new contact with <firstname>, <lastname> and <mobile_phone>
     When I add new contact to the list
     Then the new list of contacts is equal to the old list with a new contact added
 
