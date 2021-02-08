@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Folder created to enable hometask check
+jenkins_screenshots/
+allure-report/
